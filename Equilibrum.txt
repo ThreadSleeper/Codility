@@ -1,0 +1,18 @@
+#include <algorithm>
+#include <climits>
+ 
+int solution(vector<int> &A) {
+    //n=A.size();
+       if (A.size()==0) return -1; 
+    long long sum = 0;
+    int i; 
+    for(i=0;i<A.size();i++) sum+=(long long) A[i]; 
+
+    long long sum_left = 0;    
+    for(i=0;i<A.size();i++) {
+        long long sum_right = sum - sum_left - (long long) A[i];
+        if (sum_left == sum_right) return i;
+        sum_left += (long long) A[i];
+    } 
+    return -1; 
+}

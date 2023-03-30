@@ -1,0 +1,25 @@
+static class Solution
+{
+    static public int solution(int[] A)
+    {
+        // write your code in C# 6.0 with .NET 4.5 (Mono)
+
+
+        bool[] B = new bool[1000001];
+
+        foreach (int i in A)
+        {
+            if (i>0)
+            B[i] = true;
+        }
+
+
+        for (int i = 1; i <= A.Length; i++)
+        {
+            if (B[i] == false)
+                return i;
+        }
+        return A.Length + 1;
+
+    }
+}

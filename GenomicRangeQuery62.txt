@@ -1,0 +1,30 @@
+vector<int> solution(string &S, vector<int> &P, vector<int> &Q) {
+    // write your code in C++11 (g++ 4.8.2)
+    
+    vector<int> sol;
+    
+    //int min[P.size()];
+    
+    
+    for (int j=0; j<P.size(); j++)
+    sol.push_back(4);
+    int p,q;
+    for (int j=0; j<P.size(); j++)
+    {
+        p=P[j];
+        q=Q[j];
+        
+    for (int i=P[j]; i<=Q[j] ; i++)
+    {
+        if (S[i]=='A')
+        sol[j] =1;
+        
+        else if ((S[i]=='C') && (sol[j]>2))
+        sol[j] =2;
+        else if ((S[i]=='G') && (sol[j]>3))
+        sol[j] =3;
+     
+    }
+    }
+    return sol;
+}

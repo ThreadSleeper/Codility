@@ -1,0 +1,25 @@
+int solution(int N) {
+    // write your code in C++11 (g++ 4.8.2)
+    int sum=0, maxSum=0;
+    
+    while ((N!=0) && (N % 2 == 0))
+    {
+        N=N/2;
+    }
+    
+    while (N!=0)
+    {
+        if (N%2 == 0)
+        {
+            sum++;
+        }
+        else
+        {
+            if (sum > maxSum)
+        maxSum=sum;   
+        sum=0;
+        }
+        N=N/2;
+    }   
+    return maxSum;
+}

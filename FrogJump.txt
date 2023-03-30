@@ -1,0 +1,7 @@
+int solution(int X, int Y, int D) {
+    // write your code in C++11 (g++ 4.8.2)
+    
+    if ((Y-X)%D !=0) return     (Y-X)/D +1;
+    return (Y-X)/D;
+    
+}

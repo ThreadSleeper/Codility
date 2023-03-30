@@ -1,0 +1,30 @@
+#include <algorithm>
+#include <climits>
+ 
+int solution(vector<int> &A) {
+    unsigned int size = A.size();
+ 
+    vector<long long> parts;
+    parts.reserve(size+1);
+ 
+    long long last = 0;
+ 
+    for (unsigned int i=0; i<size-1; i++){
+        if (i == 0){
+            parts.push_back(A[i]);
+        } else {
+            parts.push_back(A[i]+parts[i-1]);
+        }
+        if (i==size-2){
+            last = parts[i]+ A[i+1];
+        }
+    }
+ 
+    long long solution = LLONG_MAX;
+ 
+    for(unsigned int i=0; i<parts.size(); i++){
+        solution = min(solution,abs(last - 2 * parts[i]));
+    }
+ 
+    return solution;
+}

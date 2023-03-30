@@ -1,0 +1,11 @@
+int solution(int A, int B, int K) {
+    // write your code in C99 (gcc 4.8.2)
+       //int min_value =  floor ((A + K -1) / K) * K;
+       int min_value =  (A + K -1) / K * K;
+ 
+    if (min_value > B)
+      return 0;
+ 
+    //return (floor (B - min_value) / K) + 1;
+    return (B - min_value) / K + 1;
+}

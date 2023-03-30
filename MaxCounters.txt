@@ -1,0 +1,27 @@
+#include <algorithm>
+ 
+vector<int> solution(int N, vector<int> &A) {
+    vector<int> sol;
+    int current_max = 0;
+    int last_increase = 0;
+ 
+    for(int i=0; i<N;i++){
+        sol.push_back(0);
+    }
+ 
+    for(unsigned int i=0; i<A.size();i++){
+        if (A[i] > N) {
+            last_increase = current_max;
+        } else {
+            sol[A[i]-1] = max(sol[A[i]-1], last_increase);
+            sol[A[i]-1]++;
+            current_max = max(current_max, sol[A[i]-1]);
+        }
+    }
+ 
+    for(int i=0; i<N;i++){
+        sol[i] = max(sol[i], last_increase);
+    }
+ 
+    return sol;
+}

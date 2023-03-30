@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1483009819 source:c:\cpp\hackerrank1\insertionsort1.c
+	<stdio.h>
+	<string.h>
+	<math.h>
+	<stdlib.h>
+	<assert.h>
+
+1483009888 source:c:\cpp\hackerrank1\insertionsort1.cpp
+	<stdio.h>
+	<string.h>
+	<math.h>
+	<stdlib.h>
+	<assert.h>
+
+1483013719 source:c:\cpp\hackerrank1\main.cpp
+	<iostream>
+	<stdio.h>
+	<string.h>
+	<math.h>
+	<stdlib.h>
+	<assert.h>
+

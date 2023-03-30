@@ -1,0 +1,49 @@
+int writeCharToList (string &S, int last_seen[], char c, int idx)
+{
+    
+    if (S[idx] == c)
+        last_seen[idx] = idx;
+    else if (idx > 0)
+        last_seen[idx] = last_seen[idx -1];
+        return last_seen[idx];
+}
+vector<int> solution(string &S, vector<int> &P, vector<int> &Q) {
+    // write your code in C++11 (g++ 4.8.2)
+    vector<int> sol;
+     int last_seen_A[S.size()] ;
+    int last_seen_C[S.size()] ;
+    int last_seen_G[S.size()];
+    int last_seen_T[S.size()] ;
+    
+    for (int i=0; i<S.size(); i++) 
+    {
+     
+    last_seen_A[i] = -1;
+    last_seen_C[i] = -1;
+    last_seen_G[i] = -1 ;
+    last_seen_T[i] = -1 ;
+    }    
+    for (int i=0; i<S.size(); i++) 
+    {
+    //for idx in xrange(len(S)):
+        last_seen_A[i] = writeCharToList(S, last_seen_A, 'A', i);
+       last_seen_C[i] = writeCharToList(S, last_seen_C, 'C', i);
+        last_seen_G[i] = writeCharToList(S, last_seen_G, 'G', i);
+       last_seen_T[i] = writeCharToList(S, last_seen_T, 'T', i);
+    }
+     
+     for (int i=0; i<Q.size(); i++) 
+    sol.push_back(0);
+     
+    for (int i=0; i<Q.size(); i++) 
+    {
+        if (last_seen_A[Q[i]] >= P[i])
+            sol[i] = 1;
+        else if(last_seen_C[Q[i]] >= P[i])
+            sol[i] = 2;
+        else if (last_seen_G[Q[i]] >= P[i])
+            sol[i] = 3;
+        else if (last_seen_T[Q[i]] >= P[i])
+            sol[i] = 4;
+    }     
+    return sol;

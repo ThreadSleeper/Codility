@@ -1,0 +1,14 @@
+int solution(int X, vector<int> &A) {
+    vector<bool> seen(A.size(),false);
+    int tot = 0;//When reach X the frog has all the leaves
+    for(unsigned int i=0; i<A.size(); i++){
+        if( A[i] <= X && (seen[A[i]-1] == false) ){
+            seen[A[i]-1] = true;
+            tot++;
+            if (tot == X){
+                return i;
+            }
+        }
+    }
+    return -1;
+}

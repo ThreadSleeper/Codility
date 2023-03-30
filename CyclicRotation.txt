@@ -1,0 +1,35 @@
+vector<int> solution(vector<int> &A, int K) {
+    // write your code in C++11 (g++ 4.8.2)
+    int temp;
+    int N=A.size();
+    if ((N==0) || (N>100))
+    return A;
+    
+    if (K>=N)
+        K=K%N;
+      
+      if ((K==0) || (K>100))
+      return A;
+      
+    int B[N];
+    //for (int i=A.size()-1 ; i >= 0; i--)
+    
+
+        
+    for (int i=0 ; i < A.size(); i++)
+    {
+
+        
+        B[i]=A[i];
+        if (i-K >=0)
+        //A[i]=A[i-K];
+        A[i]=B[i-K];
+        else
+        {
+            //B[i]=A[i];
+        A[i] = A[A.size() - (K-i)];
+        }
+        
+    }
+    return A;
+}

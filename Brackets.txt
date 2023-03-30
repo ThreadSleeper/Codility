@@ -1,0 +1,52 @@
+#include <stack>
+ 
+ 
+bool bracketFound(char c, char brackets[]);
+bool bracketsMatch(char close, char brackets[], char open);
+ 
+int solution(string &S) {
+    // write your code in C++11
+    
+    const int N = S.length();
+    
+    if (N == 0) return 1; // empty string
+    if (N%2 != 0) return 0; // odd number of chars
+    
+    // tracks the last opened brackets
+    std::stack<char> openedBrackets;
+ 
+    char opened[] = {'{', '[', '('};
+    char closed[] = {'}', ']', ')'};
+    
+ 
+    for(int i=0; i <N; i++){
+        
+        // save opening bracket in stack
+        if(bracketFound(S[i], opened)) openedBrackets.push(S[i]) ;
+        
+        // closing bracket
+        else{
+            
+            if(openedBrackets.empty()) return 0;
+            
+            // Check if brackets are complementary
+            string M("");
+            M = M + openedBrackets.top() + S[i];
+ 
+            if (M != "{}" && M != "[]" && M != "()") return 0;
+         
+            // pop elements when closing
+            openedBrackets.pop();
+        }       
+    }
+    
+    // ensure that stack is empty
+    if(openedBrackets.empty()) return 1;    
+    else return 0;
+    
+}
+ 
+bool bracketFound(char c, char brackets[]){
+    for(int i = 0; i < 3; i++) if(c == brackets[i]) return true;
+    return false;
+}
